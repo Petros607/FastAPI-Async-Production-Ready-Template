@@ -1,9 +1,50 @@
-# TMS
-Transportation Management System
+# FastAPI Async Production-Ready Template
 
-uvicorn app.main:app --reload
+Идеальный шаблон для быстрого старта асинхронных проектов на FastAPI.
 
-alembic revision --autogenerate -m "Initial migration"
+## Стек технологий
+- **FastAPI** — асинхронный веб-фреймворк.
+- **SQLAlchemy 2.0 (Async)** + **aiosqlite** — работа с БД.
+- **Alembic** — асинхронные миграции базы данных.
+- **Pydantic Settings** — строгое управление конфигурацией через `.env`.
+- **Pytest** + **HTTPX** — автоматическое тестирование асинхронного кода с БД в памяти.
+- **Flake8** — контроль качества и стиля кода (Linter).
 
-flake8 .
+## Как запустить локально
 
+1. Клонируйте репозиторий и перейдите в него:
+   ```bash
+   git clone <ссылка_на_ваш_репозиторий>
+   cd TMS
+   ```
+
+2. Создайте и активируйте виртуальное окружение:
+   ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+   ```
+
+3. Установите все зависимости:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Создайте файл конфигурации из примера и заполните его:
+   ```bash
+   cp .env.example .env
+   ```
+
+5. Примените миграции Alembic для создания таблиц:
+   ```bash
+   alembic upgrade head
+   ```
+
+6. Запустите сервер разработки:
+   ```bash
+   python -m uvicorn app.main:app --reload
+   ```
+   Документация будет доступна по адресу: `http://127.0.0`
+
+## Тестирование и Линтинг
+- Запуск тестов: `pytest`
+- Проверка стиля кода: `flake8 .`
